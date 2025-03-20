@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 
-tflite_model_path = "diabetes_model.tflite"
+tflite_model_path = "liver_disease_model.tflite"
 interpreter = tflite.Interpreter(model_path=tflite_model_path)
 interpreter.allocate_tensors()
 
@@ -46,7 +46,7 @@ def home():
     return {"message": "Welcome to the Liver Disease Prediction API!"}
 
 @app.post("/predict")
-async def predict(data: DiabetesInput):
+async def predict(data: LiverDiseaseInput):
     try:
         input_data = np.array([[data.age, data.gender, data.bmi, data.alcoholConsumption, data.smokingHistory, data.geneticRisk, data.physicalActivity, data.diabetes, data.hypertension, 
          data.liverFunctionTest
